@@ -1,0 +1,6 @@
+.env.example
+.git
+client
+node_modules
+webpack.config.js
+README.md
