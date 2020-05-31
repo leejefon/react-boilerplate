@@ -1,14 +1,19 @@
 import Immutable from 'immutable';
 
 const initialState = Immutable.fromJS({
-  debugMode: false
+  isLoggedIn: false,
+  urlBeforeLogin: '/'
 });
 
 function uiReducer(state = initialState, action) {
   switch (action.type) {
-    case 'SET_DEBUG_MODE':
+    case 'SET_LOGGED_IN':
       return state.merge({
-        debugMode: action.data
+        isLoggedIn: action.data
+      });
+    case 'SET_URL_BEFORE_LOGIN':
+      return state.merge({
+        urlBeforeLogin: action.data
       });
     default:
       return state;
