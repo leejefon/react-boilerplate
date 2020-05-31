@@ -55,6 +55,10 @@ class Login extends Component {
       });
   }
 
+  loginWithLinkedIn() {
+    window.location.href = '/auth/linkedin';
+  }
+
   render() {
     const form = (
       <>
@@ -92,6 +96,14 @@ class Login extends Component {
               onClick={() => this.login()}
             >
               Login
+            </Button>
+            &nbsp;&nbsp;
+            <Button
+              color="info"
+              size="lg"
+              onClick={() => this.loginWithLinkedIn()}
+            >
+              <i className="fab fa-linkedin" /> Login with LinkedIn
             </Button>
 
             <br />
