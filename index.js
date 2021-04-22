@@ -30,7 +30,6 @@ app.post('/api/user/me', Auth.requireLogin(), User.updateProfile);
 app.get('/auth/linkedin', passport.authenticate('linkedin', { state: 'SOME STATE' }));
 app.get('/auth/linkedin/callback', passport.authenticate('linkedin', { failureRedirect: '/login' }), Auth.oauthCallback);
 
-
 app.use('/', express.static('./public'));
 app.use('/:page', express.static('./public'));
 

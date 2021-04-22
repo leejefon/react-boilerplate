@@ -37,7 +37,7 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   User.beforeUpdate(async (user) => {
-    if (user._changed.password) {
+    if (user._changed.has('password')) {
       user.password = crypto.pbkdf2Sync(user.password, user.salt, 1000, 64, 'sha512').toString('hex');
     }
   });

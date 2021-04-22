@@ -5,7 +5,7 @@ const Sequelize = require('sequelize');
 const basename = path.basename(__filename);
 
 const db = {};
-const sequelize = new Sequelize(process.env.MYSQL_URL, {
+const sequelize = new Sequelize(process.env.MYSQL_URL + process.env.MYSQL_DBNAME, {
   dialect: 'mysql',
   logging: false
 });
@@ -13,7 +13,7 @@ const sequelize = new Sequelize(process.env.MYSQL_URL, {
 fs.readdirSync(__dirname)
   .filter((file) => (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js'))
   .forEach((file) => {
-    const model = sequelize.import(path.join(__dirname, file));
+    const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
     db[model.name] = model;
   });
 
